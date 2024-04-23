@@ -24,25 +24,20 @@ RUN apt-get update && apt-get install -y \
 
 RUN pip3 install mkdocs --break-system-packages
 
-ENV HOME="/root"
+RUN ln -s "/home/jenkins/.pyenv/bin/pyenv" /usr/local/bin/pyenv
+
+USER ${user}
+
+ENV HOME="/home/jenkins"
 WORKDIR ${HOME}
 
 SHELL ["/bin/bash", "-c"]
 
 RUN git clone --depth=1 https://github.com/pyenv/pyenv.git .pyenv
 
-RUN chown -R jenkins:jenkins "${HOME}/.pyenv"
-
 ENV PYENV_ROOT="${HOME}/.pyenv"
 ENV PATH="${PYENV_ROOT}/shims:${PYENV_ROOT}/bin:${PATH}"
-
-RUN ln -s "${PYENV_ROOT}/bin/pyenv" /usr/local/bin/pyenv
-RUN chown -R jenkins:jenkins "${PYENV_ROOT}"
-RUN chown -R jenkins:jenkins "/usr/local/bin/pyenv"
-
 RUN eval "$(pyenv init -)"
-
-USER ${user}
 
 RUN pyenv version
 
