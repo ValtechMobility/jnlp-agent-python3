@@ -28,6 +28,9 @@ ENV HOME="/root"
 WORKDIR ${HOME}
 
 RUN git clone --depth=1 https://github.com/pyenv/pyenv.git .pyenv
+
+RUN chown -R jenkins:jenkins /root/.pyenv
+
 ENV PYENV_ROOT="${HOME}/.pyenv"
 ENV PATH="${PYENV_ROOT}/shims:${PYENV_ROOT}/bin:${PATH}"
 
