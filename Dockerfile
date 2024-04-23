@@ -24,8 +24,8 @@ RUN pip3 install mkdocs --break-system-packages
 
 RUN curl https://pyenv.run | bash
 
-RUN export PYENV_ROOT="$HOME/.pyenv"
-RUN export PATH="$PYENV_ROOT/bin:$PATH"
+ENV PYENV_ROOT="${HOME}/.pyenv"
+ENV PATH="${PYENV_ROOT}/shims:${PYENV_ROOT}/bin:${PATH}"
 RUN eval "$(pyenv init -)"
 
 RUN pyenv version
