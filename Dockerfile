@@ -16,6 +16,7 @@ RUN chmod +x /usr/local/bin/jenkins-agent && \
 
 RUN apt-get update && apt-get install -y \
     git \
+    curl \
     rsync \
     python3-full \
     python3-pip \
@@ -30,7 +31,7 @@ RUN git clone --depth=1 https://github.com/pyenv/pyenv.git .pyenv
 ENV PYENV_ROOT="${HOME}/.pyenv"
 ENV PATH="${PYENV_ROOT}/shims:${PYENV_ROOT}/bin:${PATH}"
 
-RUN ls -l "${PYENV_ROOT}"
+RUN ls -l "${PYENV_ROOT}" && exit 1
 
 COPY "${PYENV_ROOT}/bin" /usr/local/bin
 
