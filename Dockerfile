@@ -22,6 +22,16 @@ RUN apt-get update && apt-get install -y \
 
 RUN pip3 install mkdocs --break-system-packages
 
+RUN curl https://pyenv.run | bash
+
+RUN export PYENV_ROOT="$HOME/.pyenv"
+RUN [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+RUN eval "$(pyenv init -)"
+
+RUN pyenv version
+
 USER ${user}
+
+RUN pyenv version
 
 ENTRYPOINT ["/usr/local/bin/jenkins-agent"]
