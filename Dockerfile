@@ -23,6 +23,9 @@ RUN apt-get update && apt-get install -y \
 
 RUN pip3 install mkdocs --break-system-packages
 
+ENV HOME="/root"
+WORKDIR ${HOME}
+
 RUN git clone --depth=1 https://github.com/pyenv/pyenv.git .pyenv
 ENV PYENV_ROOT="${HOME}/.pyenv"
 ENV PATH="${PYENV_ROOT}/shims:${PYENV_ROOT}/bin:${PATH}"
