@@ -26,6 +26,9 @@ RUN curl https://pyenv.run | bash
 
 ENV PYENV_ROOT="${HOME}/.pyenv"
 ENV PATH="${PYENV_ROOT}/shims:${PYENV_ROOT}/bin:${PATH}"
+
+COPY "${PYENV_ROOT}/bin" /usr/local/bin
+
 RUN eval "$(pyenv init -)"
 
 USER ${user}
