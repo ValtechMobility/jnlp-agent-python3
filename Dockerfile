@@ -28,8 +28,6 @@ ENV PYENV_ROOT="${HOME}/.pyenv"
 ENV PATH="${PYENV_ROOT}/shims:${PYENV_ROOT}/bin:${PATH}"
 RUN eval "$(pyenv init -)"
 
-RUN pyenv version
-
 USER ${user}
 
 RUN pyenv version
