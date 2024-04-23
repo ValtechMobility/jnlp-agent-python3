@@ -35,6 +35,7 @@ ENV PYENV_ROOT="${HOME}/.pyenv"
 ENV PATH="${PYENV_ROOT}/shims:${PYENV_ROOT}/bin:${PATH}"
 
 RUN ln -s "${PYENV_ROOT}/bin/pyenv" /usr/local/bin/pyenv
+RUN chown -R jenkins:jenkins "${PYENV_ROOT}"
 RUN chown -R jenkins:jenkins "/usr/local/bin/pyenv"
 RUN chmod 777 "/usr/local/bin/pyenv"
 
