@@ -30,6 +30,8 @@ RUN git clone --depth=1 https://github.com/pyenv/pyenv.git .pyenv
 ENV PYENV_ROOT="${HOME}/.pyenv"
 ENV PATH="${PYENV_ROOT}/shims:${PYENV_ROOT}/bin:${PATH}"
 
+RUN ls -l "${PYENV_ROOT}"
+
 COPY "${PYENV_ROOT}/bin" /usr/local/bin
 
 RUN eval "$(pyenv init -)"
