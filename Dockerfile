@@ -27,6 +27,8 @@ RUN pip3 install mkdocs --break-system-packages
 ENV HOME="/root"
 WORKDIR ${HOME}
 
+SHELL ["/bin/bash", "-c"]
+
 RUN git clone --depth=1 https://github.com/pyenv/pyenv.git .pyenv
 
 RUN chown -R jenkins:jenkins "${HOME}/.pyenv"
