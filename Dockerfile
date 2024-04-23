@@ -16,7 +16,7 @@ RUN chmod +x /usr/local/bin/jenkins-agent && \
 
 RUN apt-get update && apt-get install -y \
     rsync \
-    python3 \
+    python3-full \
     python3-pip \
     python3-venv
 
