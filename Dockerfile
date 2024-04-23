@@ -20,7 +20,7 @@ RUN apt-get update && apt-get install -y \
     python3-pip \
     python3-venv
 
-RUN pip3 install mkdocs
+RUN pip3 install mkdocs --break-system-packages
 
 USER ${user}
 
