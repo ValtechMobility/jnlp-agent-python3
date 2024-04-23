@@ -33,8 +33,6 @@ ENV PATH="${PYENV_ROOT}/shims:${PYENV_ROOT}/bin:${PATH}"
 
 RUN ls -l "${PYENV_ROOT}" && exit 1
 
-COPY "${PYENV_ROOT}/bin" /usr/local/bin
-
 RUN eval "$(pyenv init -)"
 
 USER ${user}
